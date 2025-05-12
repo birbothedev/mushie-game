@@ -1,0 +1,43 @@
+@font-face {
+    font-family: calSans;
+    src: url(CalSans-Regular.ttf);
+    font-weight: bold;
+}
+
+body {
+    background-color: #abebc6 ;
+    font-family: calSans;
+}
+
+.gameContainer {
+    width: fit-content;
+    height: auto;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 64px);
+    grid-template-rows: repeat(6, 64px); 
+    column-gap: 5%;
+    row-gap: 5%;
+}
+
+.tiles {
+    border: 3px solid black;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+.tiles:hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.tiles img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
