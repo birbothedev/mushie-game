@@ -41,3 +41,13 @@ body {
     height: 100%;
     object-fit: contain; 
 }
+
+.tiles.adjacent {
+    outline: 3px solid limegreen;
+    outline-offset: -3px;
+}
+
+.tiles.not-adjacent {
+    outline: 3px solid red;
+    outline-offset: -3px;
+}
