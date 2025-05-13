@@ -1,4 +1,6 @@
 import { spawnOrMovePlayer } from "../player/movement.js";
+import { getCurrentTile, setCurrentTile } from "../mainScript.js";
+
 
 export function isAdjacent(t1, t2){
     const x1 = parseInt(t1.dataset.x);
@@ -17,7 +19,7 @@ export function getAllTiles() {
     return Array.from(document.querySelectorAll('.tiles'));
 }
 
-export function loopThroughTiles(getCurrentTile, setCurrentTile){
+export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
     const currentTiles = Array.from(document.querySelectorAll('.tiles'));
 
     currentTiles.forEach(tile => {
