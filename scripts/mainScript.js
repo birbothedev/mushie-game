@@ -5,6 +5,8 @@ const player = new Player("name");
 const spawnTile = document.getElementById("tile3");
 let currentTile;
 
+const allTiles = Array.from(document.querySelectorAll('.tiles'));
+
 initialize();
 
 function initialize(){
@@ -12,12 +14,14 @@ function initialize(){
     spawnOrMovePlayer(spawnTile);
 
     loopThroughTiles();
+    spawnDangerAndCurrency(allTiles, 20);
 
 }
 
 function loopThroughTiles(){
-    let allTiles = document.querySelectorAll('.tiles');
-    allTiles.forEach(tile => {
+    const currentTiles = Array.from(document.querySelectorAll('.tiles'));
+
+    currentTiles.forEach(tile => {
         tile.addEventListener('mouseover', () => {
             if (isAdjacent(currentTile, tile)) {
                 tile.classList.add('adjacent');
@@ -43,9 +47,11 @@ function loopThroughTiles(){
     });
 }
 
+
 function spawnOrMovePlayer(tile){
     // check if player image exists, if so remove it
-    const existingPlayer = currentTile.querySelector("#playerImage");
+    const existingPlayer = document.querySelector("#playerImage");
+
     if (existingPlayer) {
     existingPlayer.remove();
     }
@@ -62,8 +68,42 @@ function spawnOrMovePlayer(tile){
     }
 }
 
-function spawnDanger(){
-    return;
+function spawnDangerAndCurrency(row, validTilesINT){
+    // TODO ADD TILE.HASCHILDNODES() CHECK AFTER REMOVING NUMBERS FROM DIVS
+    const validTiles = Array.from(row).filter(tile => tile !== currentTile && !tile.hasChildNodes());
+
+    // Ensure there are at least the given number of valid tiles
+    if (validTiles.length < validTilesINT) {
+        console.warn("Not enough valid tiles to spawn 10 danger and 10 petal tiles.");
+        return;
+    }
+
+    // Shuffle the valid tiles
+    for (let i = validTiles.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [validTiles[i], validTiles[j]] = [validTiles[j], validTiles[i]];
+    }
+
+    const dangerCount = Math.floor(validTilesINT / 2);
+
+    // First danger then currency
+    for (let i = 0; i < dangerCount; i++) {
+        const tile = validTiles[i];
+        const dangerImage = document.createElement("img"); //i 
+        dangerImage.src = `../images/dangerTile.png`;
+        dangerImage.alt = `danger image`;
+        dangerImage.id = 'dangerImage';
+        tile.appendChild(dangerImage);
+    }
+
+    for (let i = dangerCount; i < validTilesINT; i++) {
+        const tile = validTiles[i];
+        const petalImage = document.createElement("img"); 
+        petalImage.src = `../images/petalTile.png`;
+        petalImage.alt = `petal image`;
+        petalImage.id = 'petalImage';
+        tile.appendChild(petalImage);
+    }
 }
 
 function isAdjacent(t1, t2){
@@ -88,8 +128,7 @@ function replaceRow(){
     row1tiles.forEach(tile => tile.remove());
     
     // Shift all tiles up by 1 row
-    let allTiles = document.querySelectorAll('.tiles');
-    allTiles.forEach(tile => {
+    getAllTiles().forEach(tile => {
         tileCount ++;
         let currentX = parseInt(tile.dataset.x);
         if (currentX > 1) {
@@ -113,5 +152,11 @@ function replaceRow(){
         gridContainer.appendChild(newTile);
     }
 
+    let row6tiles = document.querySelectorAll('.row6');
+    spawnDangerAndCurrency(Array.from(row6tiles), 2);
     loopThroughTiles();
+}
+
+function getAllTiles() {
+    return Array.from(document.querySelectorAll('.tiles'));
 }
