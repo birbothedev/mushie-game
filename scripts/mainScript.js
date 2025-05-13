@@ -11,7 +11,11 @@ function initialize(){
     currentTile = spawnTile;
     spawnOrMovePlayer(spawnTile);
 
+    loopThroughTiles();
 
+}
+
+function loopThroughTiles(){
     let allTiles = document.querySelectorAll('.tiles');
     allTiles.forEach(tile => {
         tile.addEventListener('mouseover', () => {
@@ -108,4 +112,6 @@ function replaceRow(){
 
         gridContainer.appendChild(newTile);
     }
+
+    loopThroughTiles();
 }
