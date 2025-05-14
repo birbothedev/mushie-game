@@ -4,6 +4,7 @@ export class Player {
         this.health = 100;
         this.inventory = [];
         this.level = 1;
+        this.currency = 0;
     }
 
     takeDamage(amount){
@@ -16,5 +17,13 @@ export class Player {
 
     addItem(item){
         this.inventory.push(item);
+    }
+
+    addCurrency(amount){
+        this.currency += amount;
+    }
+
+    getCurrency(){
+        return this.currency;
     }
 }
