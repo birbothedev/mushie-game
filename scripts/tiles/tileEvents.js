@@ -1,6 +1,6 @@
-import { getCurrentTile } from "../mainScript.js";
 import { getAllTiles } from "./tileLogic.js";
 import { loopThroughTiles } from "./tileLogic.js";
+import { getCurrentTile, setCurrentTile } from "../mainScript.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
     // TODO ADD TILE.HASCHILDNODES() CHECK AFTER REMOVING NUMBERS FROM DIVS
@@ -75,5 +75,6 @@ export function replaceRow(){
 
     let row6tiles = document.querySelectorAll('.row6');
     spawnDangerAndCurrency(Array.from(row6tiles), 2);
-    loopThroughTiles();
+    loopThroughTiles({ getCurrentTile, setCurrentTile }); 
+
 }
