@@ -9,10 +9,20 @@ body {
     font-family: calSans;
 }
 
+.gameWrapper {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;
+    gap: 10%; 
+}
+
 .gameContainer {
     width: fit-content;
     height: auto;
     margin: 0 auto;
+    margin-left: 0;
+    margin-right: 0;
     display: grid;
     grid-template-columns: repeat(5, 64px);
     grid-template-rows: repeat(6, 64px); 
@@ -51,5 +61,15 @@ body {
 .tiles.not-adjacent {
     outline: 3px solid red;
     outline-offset: -3px;
+}
+
+.playerHealthBox {
+    position: relative;
+    white-space: nowrap;
+}
+
+.item {
+    display: inline-block;
+    padding-left: 1%;
 }
 
