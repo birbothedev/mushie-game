@@ -49,3 +49,12 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
         });
     });
 }
+
+export function styleStackedImage(imgElement) {
+    imgElement.style.position = "absolute";
+    imgElement.style.top = "0";
+    imgElement.style.left = "0";
+    imgElement.style.width = "100%";
+    imgElement.style.height = "100%";
+    imgElement.style.objectFit = "contain";
+}

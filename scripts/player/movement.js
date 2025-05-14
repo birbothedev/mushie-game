@@ -1,4 +1,5 @@
 import { replaceRow } from "../tiles/tileEvents.js";
+import { styleStackedImage } from "../tiles/tileLogic.js";
 
 export function spawnOrMovePlayer(tile){
     // check if player image exists, if so remove it
@@ -13,6 +14,7 @@ export function spawnOrMovePlayer(tile){
     playerImage.alt = `player image`;
     playerImage.id = 'playerImage';
     playerImage.style.zIndex = 2;
+    styleStackedImage(playerImage);
     tile.appendChild(playerImage);
 
     const row = parseInt(tile.dataset.x);

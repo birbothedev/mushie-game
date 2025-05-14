@@ -1,5 +1,5 @@
 import { getAllTiles } from "./tileLogic.js";
-import { loopThroughTiles } from "./tileLogic.js";
+import { loopThroughTiles, styleStackedImage } from "./tileLogic.js";
 import { getCurrentTile, setCurrentTile } from "../mainScript.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
@@ -28,6 +28,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         dangerImage.alt = `danger image`;
         dangerImage.id = 'dangerImage';
         dangerImage.style.zIndex = 1;
+        styleStackedImage(dangerImage);
         tile.appendChild(dangerImage);
     }
 
@@ -38,6 +39,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         petalImage.alt = `petal image`;
         petalImage.id = 'petalImage';
         petalImage.style.zIndex = 1;
+        styleStackedImage(petalImage);
         tile.appendChild(petalImage);
     }
 }

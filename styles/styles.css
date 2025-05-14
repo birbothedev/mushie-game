@@ -21,6 +21,7 @@ body {
 }
 
 .tiles {
+    position: relative;
     border: 3px solid black;
     width: 100%;
     height: auto;
@@ -51,3 +52,4 @@ body {
     outline: 3px solid red;
     outline-offset: -3px;
 }
+
