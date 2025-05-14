@@ -1,8 +1,9 @@
 
 import { Player } from "./classes/player.js";
-import { loopThroughTiles } from "./tiles/tileLogic.js";
+import { loopThroughTiles, coverTiles } from "./tiles/tileLogic.js";
 import { spawnOrMovePlayer } from "./player/movement.js";
 import { spawnDangerAndCurrency } from "./tiles/tileEvents.js";
+import { doDamageToPlayer } from "./player/playerEvents.js";
 
 const player = new Player("name");
 
@@ -17,11 +18,16 @@ export function setCurrentTile(tile) {
     currentTile = tile;
 }
 
+export function getPlayer(){
+    return player;
+}
+
 function initialize(){
     setCurrentTile(spawnTile);
     spawnOrMovePlayer(spawnTile);
     loopThroughTiles({ getCurrentTile, setCurrentTile });
     spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 10);
-}
+    // coverTiles();
+}       
 
 initialize();

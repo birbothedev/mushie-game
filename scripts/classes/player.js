@@ -10,6 +10,10 @@ export class Player {
         this.health -= amount;
     }
 
+    getHealth(){
+        return this.health;
+    }
+
     addItem(item){
         this.inventory.push(item);
     }

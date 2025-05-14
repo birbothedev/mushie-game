@@ -1,6 +1,6 @@
 import { spawnOrMovePlayer, addPlayerToNewTile, removePlayerFromOldTile } from "../player/movement.js";
-import { getCurrentTile, setCurrentTile } from "../mainScript.js";
-
+import { getCurrentTile, setCurrentTile, getPlayer } from "../mainScript.js";
+import { doDamageToPlayer } from "../player/playerEvents.js";
 
 export function isAdjacent(t1, t2){
     const x1 = parseInt(t1.dataset.x);
@@ -45,6 +45,7 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 spawnOrMovePlayer(clickedTile);
                 addPlayerToNewTile(clickedTile);
                 setCurrentTile(clickedTile);
+                doDamageToPlayer(getPlayer());
             }
         });
     });
@@ -57,4 +58,28 @@ export function styleStackedImage(imgElement) {
     imgElement.style.width = "100%";
     imgElement.style.height = "100%";
     imgElement.style.objectFit = "contain";
+}
+
+export function addDangerToTile(tile){
+    tile.classList.add('hasDanger');
+}
+
+export function addCurrencyToTile(tile){
+    tile.classList.add('hasCurrency');
+}
+
+export function coverTiles(){
+    getAllTiles().forEach(tile => {
+        const coverImage = document.createElement("img"); 
+        coverImage.src = `../images/tileCover.png`;
+        coverImage.alt = `cover image`;
+        coverImage.id = 'tileCoverImage';
+        coverImage.style.zIndex = 2;
+        styleStackedImage(coverImage);
+        tile.appendChild(coverImage);
+    });
+}
+
+export function removeTileCover(tile){
+
 }
