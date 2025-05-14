@@ -27,6 +27,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         dangerImage.src = `../images/dangerTile.png`;
         dangerImage.alt = `danger image`;
         dangerImage.id = 'dangerImage';
+        dangerImage.style.zIndex = 1;
         tile.appendChild(dangerImage);
     }
 
@@ -36,6 +37,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         petalImage.src = `../images/petalTile.png`;
         petalImage.alt = `petal image`;
         petalImage.id = 'petalImage';
+        petalImage.style.zIndex = 1;
         tile.appendChild(petalImage);
     }
 }

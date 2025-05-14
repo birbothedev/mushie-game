@@ -12,10 +12,21 @@ export function spawnOrMovePlayer(tile){
     playerImage.src = `../images/player.png`;
     playerImage.alt = `player image`;
     playerImage.id = 'playerImage';
+    playerImage.style.zIndex = 2;
     tile.appendChild(playerImage);
 
     const row = parseInt(tile.dataset.x);
     if (row === 6){
-        replaceRow();
+        setTimeout(function() {
+            replaceRow();
+        }, 1000);
     }
+}
+
+export function addPlayerToNewTile(tile){
+    tile.classList.add('hasPlayer');
+}
+
+export function removePlayerFromOldTile(tile){
+    tile.classList.remove('hasPlayer');
 }

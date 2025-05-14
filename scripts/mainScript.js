@@ -18,14 +18,10 @@ export function setCurrentTile(tile) {
 }
 
 function initialize(){
-    // setCurrentTile(spawnTile);
-    currentTile = spawnTile;
+    setCurrentTile(spawnTile);
     spawnOrMovePlayer(spawnTile);
-
     loopThroughTiles({ getCurrentTile, setCurrentTile });
-
     spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 10);
-
 }
 
 initialize();

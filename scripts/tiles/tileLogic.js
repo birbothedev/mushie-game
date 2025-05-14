@@ -1,4 +1,4 @@
-import { spawnOrMovePlayer } from "../player/movement.js";
+import { spawnOrMovePlayer, addPlayerToNewTile, removePlayerFromOldTile } from "../player/movement.js";
 import { getCurrentTile, setCurrentTile } from "../mainScript.js";
 
 
@@ -39,8 +39,11 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
 
         tile.addEventListener('click', function(event){
             const clickedTile = event.target.closest('.tiles');
+            const currentTile = getCurrentTile();
+            removePlayerFromOldTile(currentTile);
             if (isAdjacent(getCurrentTile(), clickedTile)) {
                 spawnOrMovePlayer(clickedTile);
+                addPlayerToNewTile(clickedTile);
                 setCurrentTile(clickedTile);
             }
         });
