@@ -1,6 +1,7 @@
 import { spawnOrMovePlayer, addPlayerToNewTile, removePlayerFromOldTile } from "../player/movement.js";
 import { getCurrentTile, setCurrentTile, getPlayer } from "../mainScript.js";
 import { doDamageToPlayer, giveCurrencyToPlayer } from "../player/playerEvents.js";
+import { removeDangerOrCurrencyFromTile } from "./tileEvents.js";
 
 export function isAdjacent(t1, t2){
     const x1 = parseInt(t1.dataset.x);
@@ -47,6 +48,7 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 setCurrentTile(clickedTile);
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
+                removeDangerOrCurrencyFromTile(clickedTile);
             }
         });
     });

@@ -24,7 +24,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
     // First danger then currency
     for (let i = 0; i < dangerCount; i++) {
         const tile = validTiles[i];
-        const dangerImage = document.createElement("img"); //i 
+        const dangerImage = document.createElement("img");
         dangerImage.src = `../images/dangerTile.png`;
         dangerImage.alt = `danger image`;
         dangerImage.id = 'dangerImage';
@@ -84,4 +84,17 @@ export function replaceRow(){
     spawnDangerAndCurrency(Array.from(row6tiles), 2);
     loopThroughTiles({ getCurrentTile, setCurrentTile }); 
 
+}
+
+export function removeDangerOrCurrencyFromTile(tile){
+    const existingDanger = tile.querySelector('#dangerImage');
+    const existingCurrency = tile.querySelector('#petalImage');
+
+    if (tile.classList.contains('hasDanger')){
+        tile.removeChild(existingDanger);
+        tile.classList.remove('hasDanger');
+    } else if (tile.classList.contains('hasCurrency')){
+        tile.removeChild(existingCurrency);
+        tile.classList.remove('hasCurrency');
+    }
 }

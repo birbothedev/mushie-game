@@ -21,7 +21,7 @@ export function spawnOrMovePlayer(tile){
     if (row === 6){
         setTimeout(function() {
             replaceRow();
-        }, 1000);
+        }, 500);
     }
 }
 
