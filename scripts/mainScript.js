@@ -3,7 +3,7 @@ import { Player } from "./classes/player.js";
 import { loopThroughTiles, coverTiles } from "./tiles/tileLogic.js";
 import { spawnOrMovePlayer } from "./player/movement.js";
 import { spawnDangerAndCurrency } from "./tiles/tileEvents.js";
-import { doDamageToPlayer } from "./player/playerEvents.js";
+
 
 const player = new Player("name");
 
