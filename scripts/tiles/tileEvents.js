@@ -90,18 +90,17 @@ export function replaceRow(){
 }
 
 export function removeDangerOrCurrencyFromTile(tile){
-    const existingDanger = tile.querySelector('#dangerImage');
-    const existingCurrency = tile.querySelector('#petalImage');
+    const image = tile.querySelector('.tile-image');
 
     if (tile.classList.contains('hasDanger')){
         tile.classList.remove('hasDanger');
-        if (existingDanger){
-            tile.removeChild(existingDanger);
+        if (image){
+            tile.removeChild(image);
         }
     } else if (tile.classList.contains('hasCurrency')){
         tile.classList.remove('hasCurrency');
-        if (existingCurrency){
-            tile.removeChild(existingCurrency);
+        if (image){
+            tile.removeChild(image);
         }
     }
 }
