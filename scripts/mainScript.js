@@ -26,7 +26,7 @@ function initialize(){
     setCurrentTile(spawnTile);
     spawnOrMovePlayer(spawnTile);
     loopThroughTiles({ getCurrentTile, setCurrentTile });
-    spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 10);
+    spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 20);
 }       
 
 initialize();

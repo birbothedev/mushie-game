@@ -20,6 +20,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
     }
 
     const dangerCount = Math.floor(validTilesINT / 2);
+    const currencyCount = Math.round(Math.floor(validTilesINT / 4))
 
     // First danger then currency
     for (let i = 0; i < dangerCount; i++) {
@@ -35,7 +36,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         toggleImageVisibility(dangerImage, tile);
     }
 
-    for (let i = dangerCount; i < validTilesINT; i++) {
+    for (let i = dangerCount; i < validTilesINT - currencyCount; i++) {
         const tile = validTiles[i];
         const petalImage = document.createElement("img"); 
         petalImage.src = `../images/petalTile.png`;
