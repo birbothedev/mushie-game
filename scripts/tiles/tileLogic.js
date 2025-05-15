@@ -63,13 +63,13 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
                 removeDangerOrCurrencyFromTile(clickedTile);
-                // // 🔁 First, hide all tile images
-                // getAllTiles().forEach(tile => {
-                //     const image = getTileImage(tile);
-                //     if (image) image.style.visibility = 'hidden';
-                // });
+                // hide all tile images
+                getAllTiles().forEach(tile => {
+                    const image = getTileImage(tile);
+                    if (image) image.style.visibility = 'hidden';
+                });
 
-                // ✅ Then, show only those adjacent to the new tile
+                // show only those adjacent to the new tile
                 getAdjacentTiles(clickedTile).forEach(adjTile => {
                     const image = getTileImage(adjTile);
                     if (image) image.style.visibility = 'visible';
