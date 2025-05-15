@@ -16,8 +16,22 @@ export function isAdjacent(t1, t2){
     return (dx + dy === 1);
 }
 
+export function getAdjacentTiles(clickedTile){
+    const adjacentTilesList = [];
+    getAllTiles().forEach(tile => {
+        if (isAdjacent(tile, clickedTile)){
+            adjacentTilesList.push(tile);
+        }
+    });
+    return adjacentTilesList;
+}
+
 export function getAllTiles() {
     return Array.from(document.querySelectorAll('.tiles'));
+}
+
+export function getTileImage(tile){
+    return tile.querySelector('.tile-image');
 }
 
 export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
@@ -49,6 +63,17 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
                 removeDangerOrCurrencyFromTile(clickedTile);
+                // // 🔁 First, hide all tile images
+                // getAllTiles().forEach(tile => {
+                //     const image = getTileImage(tile);
+                //     if (image) image.style.visibility = 'hidden';
+                // });
+
+                // ✅ Then, show only those adjacent to the new tile
+                getAdjacentTiles(clickedTile).forEach(adjTile => {
+                    const image = getTileImage(adjTile);
+                    if (image) image.style.visibility = 'visible';
+                });
             }
         });
     });
@@ -71,16 +96,16 @@ export function addCurrencyToTile(tile){
     tile.classList.add('hasCurrency');
 }
 
-export function coverTiles(){
-    getAllTiles().forEach(tile => {
-        const coverImage = document.createElement("img"); 
-        coverImage.src = `../images/tileCover.png`;
-        coverImage.alt = `cover image`;
-        coverImage.id = 'tileCoverImage';
-        coverImage.style.zIndex = 2;
-        styleStackedImage(coverImage);
-        tile.appendChild(coverImage);
-    });
+export function toggleImageVisibility(image, tile){
+    if (!image) {
+        console.warn("toggleImageVisibility: image is null for tile:", tile);
+        return;
+    }
+    if (!isAdjacent(tile, getCurrentTile())){
+        image.style.visibility = 'hidden';
+    } else {
+        image.style.visibility = 'visible';
+    }
 }
 
 export function removeTileCover(tile){

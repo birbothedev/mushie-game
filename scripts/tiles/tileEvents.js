@@ -1,6 +1,6 @@
-import { getAllTiles } from "./tileLogic.js";
+import {  getAllTiles, isAdjacent } from "./tileLogic.js";
 import { loopThroughTiles, styleStackedImage, 
-    addCurrencyToTile, addDangerToTile } from "./tileLogic.js";
+    addCurrencyToTile, addDangerToTile, toggleImageVisibility } from "./tileLogic.js";
 import { getCurrentTile, setCurrentTile } from "../mainScript.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
@@ -27,11 +27,12 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         const dangerImage = document.createElement("img");
         dangerImage.src = `../images/dangerTile.png`;
         dangerImage.alt = `danger image`;
-        dangerImage.id = 'dangerImage';
+        dangerImage.classList.add('tile-image');
         dangerImage.style.zIndex = 1;
         styleStackedImage(dangerImage);
         addDangerToTile(tile);
         tile.appendChild(dangerImage);
+        toggleImageVisibility(dangerImage, tile);
     }
 
     for (let i = dangerCount; i < validTilesINT; i++) {
@@ -39,13 +40,15 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         const petalImage = document.createElement("img"); 
         petalImage.src = `../images/petalTile.png`;
         petalImage.alt = `petal image`;
-        petalImage.id = 'petalImage';
+        petalImage.classList.add('tile-image');
         petalImage.style.zIndex = 1;
         styleStackedImage(petalImage);
         addCurrencyToTile(tile);
         tile.appendChild(petalImage);
+        toggleImageVisibility(petalImage, tile);
     }
 }
+
 
 export function replaceRow(){
     console.log("Replacing row 6");
@@ -91,10 +94,14 @@ export function removeDangerOrCurrencyFromTile(tile){
     const existingCurrency = tile.querySelector('#petalImage');
 
     if (tile.classList.contains('hasDanger')){
-        tile.removeChild(existingDanger);
         tile.classList.remove('hasDanger');
+        if (existingDanger){
+            tile.removeChild(existingDanger);
+        }
     } else if (tile.classList.contains('hasCurrency')){
-        tile.removeChild(existingCurrency);
         tile.classList.remove('hasCurrency');
+        if (existingCurrency){
+            tile.removeChild(existingCurrency);
+        }
     }
 }
