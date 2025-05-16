@@ -16,6 +16,7 @@ export function spawnOrMovePlayer(tile){
     playerImage.style.zIndex = 2;
     styleStackedImage(playerImage);
     tile.appendChild(playerImage);
+    addPlayerToNewTile(tile);
 
     const row = parseInt(tile.dataset.x);
     if (row === 6){

@@ -9,11 +9,22 @@ export function isAdjacent(t1, t2){
     const x2 = parseInt(t2.dataset.x);
     const y2 = parseInt(t2.dataset.y);
 
-
     const dx = Math.abs(x1 - x2);
     const dy = Math.abs(y1 - y2);
 
     return (dx + dy === 1);
+}
+
+export function findDistanceBetweenTiles(t1, t2){
+    const x1 = parseInt(t1.dataset.x);
+    const y1 = parseInt(t1.dataset.y);
+    const x2 = parseInt(t2.dataset.x);
+    const y2 = parseInt(t2.dataset.y);
+
+    const dx = Math.abs(x1 - x2);
+    const dy = Math.abs(y1 - y2);
+
+    return (dx + dy);
 }
 
 export function getAdjacentTiles(clickedTile){
@@ -63,17 +74,17 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
                 removeDangerOrCurrencyFromTile(clickedTile);
-                // hide all tile images
-                getAllTiles().forEach(tile => {
-                    const image = getTileImage(tile);
-                    if (image) image.style.visibility = 'hidden';
-                });
+                // // hide all tile images
+                // getAllTiles().forEach(tile => {
+                //     const image = getTileImage(tile);
+                //     if (image) image.style.visibility = 'hidden';
+                // });
 
-                // show only those adjacent to the new tile
-                getAdjacentTiles(clickedTile).forEach(adjTile => {
-                    const image = getTileImage(adjTile);
-                    if (image) image.style.visibility = 'visible';
-                });
+                // // show only those adjacent to the new tile
+                // getAdjacentTiles(clickedTile).forEach(adjTile => {
+                //     const image = getTileImage(adjTile);
+                //     if (image) image.style.visibility = 'visible';
+                // });
             }
         });
     });
@@ -110,4 +121,12 @@ export function toggleImageVisibility(image, tile){
 
 export function removeTileCover(tile){
 
+}
+
+export function shuffleTiles(validTilesArray){
+    // Shuffle the valid tiles
+    for (let i = validTilesArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [validTilesArray[i], validTilesArray[j]] = [validTilesArray[j], validTilesArray[i]];
+    }
 }

@@ -1,6 +1,7 @@
 import {  getAllTiles, isAdjacent } from "./tileLogic.js";
 import { loopThroughTiles, styleStackedImage, 
-    addCurrencyToTile, addDangerToTile, toggleImageVisibility } from "./tileLogic.js";
+    addCurrencyToTile, addDangerToTile, toggleImageVisibility,
+    shuffleTiles } from "./tileLogic.js";
 import { getCurrentTile, setCurrentTile } from "../mainScript.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
@@ -13,11 +14,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         return;
     }
 
-    // Shuffle the valid tiles
-    for (let i = validTiles.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [validTiles[i], validTiles[j]] = [validTiles[j], validTiles[i]];
-    }
+    shuffleTiles(validTiles);
 
     const dangerCount = Math.floor(validTilesINT / 2);
     const currencyCount = Math.round(Math.floor(validTilesINT / 4))
@@ -33,7 +30,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         styleStackedImage(dangerImage);
         addDangerToTile(tile);
         tile.appendChild(dangerImage);
-        toggleImageVisibility(dangerImage, tile);
+        // toggleImageVisibility(dangerImage, tile);
     }
 
     for (let i = dangerCount; i < validTilesINT - currencyCount; i++) {
@@ -46,7 +43,7 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         styleStackedImage(petalImage);
         addCurrencyToTile(tile);
         tile.appendChild(petalImage);
-        toggleImageVisibility(petalImage, tile);
+        // toggleImageVisibility(petalImage, tile);
     }
 }
 
