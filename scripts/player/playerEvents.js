@@ -8,7 +8,6 @@ export function doDamageToPlayer(player){
     if (currentTile.classList.contains("hasDanger")){
         player.takeDamage(20);
     }
-    console.log("Player health: ", player.getHealth());
 
     if (player.getHealth() <= 0){
         playerDeath();

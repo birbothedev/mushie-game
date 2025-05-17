@@ -1,5 +1,6 @@
 
 import { Player } from "./classes/player.js";
+import { Enemy } from "./classes/enemy.js";
 import { loopThroughTiles } from "./tiles/tileLogic.js";
 import { spawnOrMovePlayer } from "./player/movement.js";
 import { spawnDangerAndCurrency } from "./tiles/tileEvents.js";
@@ -7,6 +8,7 @@ import { spawnEnemy } from "./enemy/enemyEvents.js";
 
 
 const player = new Player("name");
+const enemy = new Enemy();
 
 const spawnTile = document.getElementById("tile3");
 let currentTile;
@@ -21,6 +23,10 @@ export function setCurrentTile(tile) {
 
 export function getPlayer(){
     return player;
+}
+
+export function getEnemy(){
+    return enemy;
 }
 
 function initialize(){

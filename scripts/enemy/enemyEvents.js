@@ -7,7 +7,7 @@ export function spawnEnemy(){
 
     shuffleTiles(validTiles);
 
-    let i = Math.floor(Math.random() * (validTiles.length + 1));
+    let i = Math.floor(Math.random() * (validTiles.length));
     const tile = validTiles[i];
 
     const enemyImage = document.createElement("img"); 

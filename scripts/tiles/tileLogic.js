@@ -1,7 +1,8 @@
 import { spawnOrMovePlayer, addPlayerToNewTile, removePlayerFromOldTile } from "../player/movement.js";
-import { getCurrentTile, setCurrentTile, getPlayer } from "../mainScript.js";
+import { getCurrentTile, setCurrentTile, getPlayer, getEnemy } from "../mainScript.js";
 import { doDamageToPlayer, giveCurrencyToPlayer } from "../player/playerEvents.js";
 import { removeDangerOrCurrencyFromTile } from "./tileEvents.js";
+import { moveEnemyCloserToPlayer } from "../enemy/enemyMovement.js";
 
 export function isAdjacent(t1, t2){
     const x1 = parseInt(t1.dataset.x);
@@ -16,6 +17,7 @@ export function isAdjacent(t1, t2){
 }
 
 export function findDistanceBetweenTiles(t1, t2){
+    const list = [];
     const x1 = parseInt(t1.dataset.x);
     const y1 = parseInt(t1.dataset.y);
     const x2 = parseInt(t2.dataset.x);
@@ -24,7 +26,13 @@ export function findDistanceBetweenTiles(t1, t2){
     const dx = Math.abs(x1 - x2);
     const dy = Math.abs(y1 - y2);
 
-    return (dx + dy);
+    const distance = dx + dy;
+
+    list.push(dx);
+    list.push(dy);
+    list.push(distance);
+
+    return list;
 }
 
 export function getAdjacentTiles(clickedTile){
@@ -74,6 +82,7 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
                 removeDangerOrCurrencyFromTile(clickedTile);
+                moveEnemyCloserToPlayer(getEnemy(), clickedTile);
                 // // hide all tile images
                 // getAllTiles().forEach(tile => {
                 //     const image = getTileImage(tile);
@@ -117,10 +126,6 @@ export function toggleImageVisibility(image, tile){
     } else {
         image.style.visibility = 'visible';
     }
-}
-
-export function removeTileCover(tile){
-
 }
 
 export function shuffleTiles(validTilesArray){
