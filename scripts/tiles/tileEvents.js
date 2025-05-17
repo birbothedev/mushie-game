@@ -1,8 +1,9 @@
 import {  getAllTiles, isAdjacent } from "./tileLogic.js";
-import { loopThroughTiles, styleStackedImage, 
+import { loopThroughTiles, 
     addCurrencyToTile, addDangerToTile, toggleImageVisibility,
     shuffleTiles } from "./tileLogic.js";
 import { getCurrentTile, setCurrentTile } from "../mainScript.js";
+import { createCurrencyImage, createDangerTileImage } from "./tileImageEvents.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
     // TODO ADD TILE.HASCHILDNODES() CHECK AFTER REMOVING NUMBERS FROM DIVS
@@ -22,27 +23,15 @@ export function spawnDangerAndCurrency(row, validTilesINT){
     // First danger then currency
     for (let i = 0; i < dangerCount; i++) {
         const tile = validTiles[i];
-        const dangerImage = document.createElement("img");
-        dangerImage.src = `../images/dangerTile.png`;
-        dangerImage.alt = `danger image`;
-        dangerImage.classList.add('tile-image');
-        dangerImage.style.zIndex = 1;
-        styleStackedImage(dangerImage);
+        createDangerTileImage(tile);
         addDangerToTile(tile);
-        tile.appendChild(dangerImage);
         // toggleImageVisibility(dangerImage, tile);
     }
 
     for (let i = dangerCount; i < validTilesINT - currencyCount; i++) {
         const tile = validTiles[i];
-        const petalImage = document.createElement("img"); 
-        petalImage.src = `../images/petalTile.png`;
-        petalImage.alt = `petal image`;
-        petalImage.classList.add('tile-image');
-        petalImage.style.zIndex = 1;
-        styleStackedImage(petalImage);
+        createCurrencyImage(tile);
         addCurrencyToTile(tile);
-        tile.appendChild(petalImage);
         // toggleImageVisibility(petalImage, tile);
     }
 }

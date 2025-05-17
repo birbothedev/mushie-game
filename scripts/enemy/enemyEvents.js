@@ -1,5 +1,6 @@
-import { getAllTiles, isAdjacent, shuffleTiles, styleStackedImage } from "../tiles/tileLogic.js";
+import { getAllTiles, isAdjacent, shuffleTiles } from "../tiles/tileLogic.js";
 import { getCurrentTile } from "../mainScript.js";
+import { createNewEnemyImage } from "../tiles/tileImageEvents.js";
 
 export function spawnEnemy(){
     const validTiles = Array.from(getAllTiles()).filter(tile => tile !== getCurrentTile() 
@@ -10,13 +11,7 @@ export function spawnEnemy(){
     let i = Math.floor(Math.random() * (validTiles.length));
     const tile = validTiles[i];
 
-    const enemyImage = document.createElement("img"); 
-    enemyImage.src = `../images/blueTile.png`;
-    enemyImage.alt = `enemy image`;
-    enemyImage.id = 'enemyImage';
-    enemyImage.style.zIndex = 1;
-    styleStackedImage(enemyImage);
-    tile.appendChild(enemyImage);
+    createNewEnemyImage(tile);
     addEnemyToNewTile(tile);
 }
 

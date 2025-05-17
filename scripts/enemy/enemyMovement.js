@@ -1,6 +1,6 @@
 
+import { removeOldEnemyImageAndAddNew } from "../tiles/tileImageEvents.js";
 import { findDistanceBetweenTiles, getAllTiles } from "../tiles/tileLogic.js";
-import { styleStackedImage } from "../tiles/tileLogic.js";
 
 export function moveEnemyCloserToPlayer(enemy, playerTile){
     const enemyTile = getEnemyTile();
@@ -37,20 +37,7 @@ export function moveEnemyCloserToPlayer(enemy, playerTile){
         enemy.setDistance(distanceList[2]);
         console.log("Enemy moved to:", newX, newY, "New Distance:", distanceList[2]);
 
-        // move image from old tile to new tile
-        const existingEnemy = document.querySelector("#enemyImage");
-    
-        if (existingEnemy) {
-            enemyTile.removeChild(existingEnemy);
-        }
-    
-        const enemyImage = document.createElement("img"); 
-        enemyImage.src = `../images/blueTile.png`;
-        enemyImage.alt = `enemy image`;
-        enemyImage.id = 'enemyImage';
-        enemyImage.style.zIndex = 2;
-        styleStackedImage(enemyImage);
-        newTile.appendChild(enemyImage);
+        removeOldEnemyImageAndAddNew(enemyTile, newTile);
     }
 }
 
