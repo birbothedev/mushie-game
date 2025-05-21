@@ -2,8 +2,9 @@ import {  getAllTiles, isAdjacent } from "./tileLogic.js";
 import { loopThroughTiles, 
     addCurrencyToTile, addDangerToTile, toggleImageVisibility,
     shuffleTiles } from "./tileLogic.js";
-import { getCurrentTile, setCurrentTile } from "../mainScript.js";
+import { getCurrentTile, getSpawnTile, setCurrentTile } from "../mainScript.js";
 import { createCurrencyImage, createDangerTileImage } from "./tileImageEvents.js";
+import { spawnOrMovePlayer } from "../player/movement.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
     // TODO ADD TILE.HASCHILDNODES() CHECK AFTER REMOVING NUMBERS FROM DIVS

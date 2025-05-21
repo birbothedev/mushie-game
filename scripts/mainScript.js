@@ -13,6 +13,10 @@ const enemy = new Enemy();
 const spawnTile = document.getElementById("tile3");
 let currentTile;
 
+export function getSpawnTile(){
+    return spawnTile;
+}
+
 export function getCurrentTile() {
     return currentTile;
 }
@@ -34,7 +38,7 @@ function initialize(){
     spawnOrMovePlayer(spawnTile);
     loopThroughTiles({ getCurrentTile, setCurrentTile });
     spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 20);
-    spawnEnemy();
+    // spawnEnemy();
 }       
 
 initialize();

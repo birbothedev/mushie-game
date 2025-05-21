@@ -26,4 +26,8 @@ export class Player {
     getCurrency(){
         return this.currency;
     }
+
+    getLevel(){
+        return this.level;
+    }
 }

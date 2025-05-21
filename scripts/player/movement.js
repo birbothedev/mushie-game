@@ -27,3 +27,7 @@ export function addPlayerToNewTile(tile){
 export function removePlayerFromOldTile(tile){
     tile.classList.remove('hasPlayer');
 }
+
+export function respawnPlayerAtTopRow(){
+    
+}
