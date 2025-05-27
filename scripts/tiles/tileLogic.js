@@ -82,7 +82,7 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
                 removeDangerOrCurrencyFromTile(clickedTile);
-                moveEnemyCloserToPlayer(getEnemy(), clickedTile);
+                // moveEnemyCloserToPlayer(getEnemy(), clickedTile);
                 // // hide all tile images
                 // getAllTiles().forEach(tile => {
                 //     const image = getTileImage(tile);

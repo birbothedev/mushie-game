@@ -80,3 +80,11 @@ body {
     display: inline-block;
     padding-left: 4%;
 }
+
+.levelGroup {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    white-space: nowrap;
+    margin: 0 auto;
+}

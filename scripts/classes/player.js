@@ -3,7 +3,7 @@ export class Player {
         this.name = name;
         this.health = 100;
         this.inventory = [];
-        this.level = 1;
+        this.level = 0;
         this.currency = 0;
     }
 
@@ -29,5 +29,9 @@ export class Player {
 
     getLevel(){
         return this.level;
+    }
+
+    setLevel(level){
+        this.level = level;
     }
 }

@@ -4,7 +4,7 @@ import { loopThroughTiles,
     shuffleTiles } from "./tileLogic.js";
 import { getCurrentTile, getSpawnTile, setCurrentTile } from "../mainScript.js";
 import { createCurrencyImage, createDangerTileImage } from "./tileImageEvents.js";
-import { spawnOrMovePlayer } from "../player/movement.js";
+import { advanceLevel } from "../util/levelTracker.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
     // TODO ADD TILE.HASCHILDNODES() CHECK AFTER REMOVING NUMBERS FROM DIVS
@@ -67,10 +67,11 @@ export function replaceRow(){
     addNewRow(6);
     loopThroughTiles({ getCurrentTile, setCurrentTile }); 
 
+    advanceLevel();
+
 }
 
 function addNewRow(int){
-    // Add a new rows at the bottom
     const gridContainer = document.getElementById('gameContainer');
 
     for (let i = 1; i <= 5; i++) {
