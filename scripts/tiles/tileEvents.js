@@ -45,36 +45,44 @@ export function replaceRow(){
     // Remove all row1 tiles
     let row1tiles = document.querySelectorAll('.row1');
     row1tiles.forEach(tile => tile.remove());
+    let row2tiles = document.querySelectorAll('.row2');
+    row2tiles.forEach(tile => tile.remove());
+    let row3tiles = document.querySelectorAll('.row3');
+    row3tiles.forEach(tile => tile.remove());
     
     // Shift all tiles up by 1 row
     getAllTiles().forEach(tile => {
         tileCount ++;
         let currentX = parseInt(tile.dataset.x);
         if (currentX > 1) {
-            tile.dataset.x = currentX - 1;
+            tile.dataset.x = currentX - 3;
             tile.classList.remove(`row${currentX}`);
-            tile.classList.add(`row${currentX - 1}`);
-            tile.id = `tile${tileCount - 1}`;
+            tile.classList.add(`row${currentX - 3}`);
+            tile.id = `tile${tileCount - 3}`;
         }
     });
 
-    // Add a new row at the bottom (row6)
+    addNewRow(4);
+    addNewRow(5);
+    addNewRow(6);
+    loopThroughTiles({ getCurrentTile, setCurrentTile }); 
+
+}
+
+function addNewRow(int){
+    // Add a new rows at the bottom
     const gridContainer = document.getElementById('gameContainer');
 
     for (let i = 1; i <= 5; i++) {
         const newTile = document.createElement('div');
-        newTile.classList.add('tiles', 'row6');
+        newTile.classList.add('tiles', `row${int}`);
         newTile.id = `tile${document.querySelectorAll('.tiles').length + 1}`;
-        newTile.dataset.x = 6;
+        newTile.dataset.x = int;
         newTile.dataset.y = i;
-
         gridContainer.appendChild(newTile);
     }
-
-    let row6tiles = document.querySelectorAll('.row6');
-    spawnDangerAndCurrency(Array.from(row6tiles), 2);
-    loopThroughTiles({ getCurrentTile, setCurrentTile }); 
-
+    let rowtiles = document.querySelectorAll(`.row${int}`);
+    spawnDangerAndCurrency(Array.from(rowtiles), 2);
 }
 
 export function removeDangerOrCurrencyFromTile(tile){
