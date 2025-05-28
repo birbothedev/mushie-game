@@ -1,6 +1,5 @@
 
 import { Player } from "./classes/player.js";
-import { Enemy } from "./classes/enemy.js";
 import { loopThroughTiles } from "./tiles/tileLogic.js";
 import { spawnOrMovePlayer } from "./player/movement.js";
 import { spawnDangerAndCurrency } from "./tiles/tileEvents.js";

@@ -4,7 +4,6 @@ import { loopThroughTiles,
     shuffleTiles } from "./tileLogic.js";
 import { getCurrentTile, getSpawnTile, setCurrentTile } from "../mainScript.js";
 import { createCurrencyImage, createDangerTileImage } from "./tileImageEvents.js";
-import { advanceLevel } from "../util/levelTracker.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
     const validTiles = Array.from(row).filter(tile => tile !== getCurrentTile() && !tile.hasChildNodes());
