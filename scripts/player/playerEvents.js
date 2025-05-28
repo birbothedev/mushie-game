@@ -1,5 +1,5 @@
 import { Player } from "../classes/player.js";
-import { getCurrentTile } from "../mainScript.js";
+import { getCurrentTile, getPlayer } from "../mainScript.js";
 import { resetGame } from "../util/util.js";
 
 export function doDamageToPlayer(player){
@@ -28,6 +28,10 @@ export function giveCurrencyToPlayer(player){
         player.addCurrency(1);
     }
 
+    updateCurrencyText();
+}
+
+export function updateCurrencyText(){
     const playerCurrencyValue = document.getElementById("playerCurrencyValue");
-    playerCurrencyValue.innerText = player.getCurrency();
+    playerCurrencyValue.innerText = getPlayer().getCurrency();
 }

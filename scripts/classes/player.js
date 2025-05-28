@@ -34,4 +34,8 @@ export class Player {
     setLevel(level){
         this.level = level;
     }
+
+    setCurrency(currency){
+        this.currency = currency;
+    }
 }

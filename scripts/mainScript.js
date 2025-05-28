@@ -4,6 +4,7 @@ import { Enemy } from "./classes/enemy.js";
 import { loopThroughTiles } from "./tiles/tileLogic.js";
 import { spawnOrMovePlayer } from "./player/movement.js";
 import { spawnDangerAndCurrency } from "./tiles/tileEvents.js";
+import { listenForButtonClicks } from "./util/util.js";
 
 
 const player = new Player("name");
@@ -37,6 +38,7 @@ function initialize(){
     spawnOrMovePlayer(spawnTile);
     loopThroughTiles({ getCurrentTile, setCurrentTile });
     spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 20);
+    listenForButtonClicks();
 }       
 
 initialize();

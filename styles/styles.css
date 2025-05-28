@@ -88,3 +88,26 @@ body {
     white-space: nowrap;
     margin: 0 auto;
 }
+
+.buttons {
+    background-color: #FFFFFF;
+    border: 3px solid rgb(209,213,219);
+    border-radius: .5rem;
+    color: #111827;
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.buttons:hover {
+    color:blueviolet;
+    border: 3px solid rgb(209,213,219);
+    border-radius: .5rem;
+    background-color: cadetblue;
+    align-items: center;
+    cursor: pointer;
+}

@@ -67,7 +67,7 @@ export function replaceRow(){
     addNewRow(6);
     loopThroughTiles({ getCurrentTile, setCurrentTile }); 
 
-    advanceLevel();
+    // advanceLevel();
 
 }
 
