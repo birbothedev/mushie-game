@@ -7,7 +7,6 @@ import { createCurrencyImage, createDangerTileImage } from "./tileImageEvents.js
 import { advanceLevel } from "../util/levelTracker.js";
 
 export function spawnDangerAndCurrency(row, validTilesINT){
-    // TODO ADD TILE.HASCHILDNODES() CHECK AFTER REMOVING NUMBERS FROM DIVS
     const validTiles = Array.from(row).filter(tile => tile !== getCurrentTile() && !tile.hasChildNodes());
 
     // Ensure there are at least the given number of valid tiles
@@ -26,14 +25,14 @@ export function spawnDangerAndCurrency(row, validTilesINT){
         const tile = validTiles[i];
         createDangerTileImage(tile);
         addDangerToTile(tile);
-        // toggleImageVisibility(dangerImage, tile);
+        toggleImageVisibility(tile);
     }
 
     for (let i = dangerCount; i < validTilesINT - currencyCount; i++) {
         const tile = validTiles[i];
         createCurrencyImage(tile);
         addCurrencyToTile(tile);
-        // toggleImageVisibility(petalImage, tile);
+        toggleImageVisibility(tile);
     }
 }
 
@@ -66,8 +65,6 @@ export function replaceRow(){
     addNewRow(5);
     addNewRow(6);
     loopThroughTiles({ getCurrentTile, setCurrentTile }); 
-
-    // advanceLevel();
 
 }
 

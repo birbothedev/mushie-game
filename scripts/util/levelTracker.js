@@ -11,7 +11,7 @@ export function advanceLevel(){
 
     console.log("Level: ", currentLevel);
 
-    if (currentLevel == 5){
+    if (currentLevel == 1){
         spawnEnemy();
     }
 }

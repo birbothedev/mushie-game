@@ -82,18 +82,20 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
                 removeDangerOrCurrencyFromTile(clickedTile);
-                // moveEnemyCloserToPlayer(getEnemy(), clickedTile);
-                // // hide all tile images
-                // getAllTiles().forEach(tile => {
-                //     const image = getTileImage(tile);
-                //     if (image) image.style.visibility = 'hidden';
-                // });
+                if (getEnemy()){
+                    moveEnemyCloserToPlayer(getEnemy(), clickedTile);
+                }
+                // hide all tile images
+                getAllTiles().forEach(tile => {
+                    const image = getTileImage(tile);
+                    if (image) image.style.visibility = 'hidden';
+                });
 
-                // // show only those adjacent to the new tile
-                // getAdjacentTiles(clickedTile).forEach(adjTile => {
-                //     const image = getTileImage(adjTile);
-                //     if (image) image.style.visibility = 'visible';
-                // });
+                // show only those adjacent to the new tile
+                getAdjacentTiles(clickedTile).forEach(adjTile => {
+                    const image = getTileImage(adjTile);
+                    if (image) image.style.visibility = 'visible';
+                });
             }
         });
     });
@@ -107,7 +109,8 @@ export function addCurrencyToTile(tile){
     tile.classList.add('hasCurrency');
 }
 
-export function toggleImageVisibility(image, tile){
+export function toggleImageVisibility(tile){
+    const image = tile.querySelector('.tile-image');
     if (!image) {
         console.warn("toggleImageVisibility: image is null for tile:", tile);
         return;

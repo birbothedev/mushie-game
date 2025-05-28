@@ -8,10 +8,10 @@ import { listenForButtonClicks } from "./util/util.js";
 
 
 const player = new Player("name");
-const enemy = new Enemy();
 
 const spawnTile = document.getElementById("tile3");
 let currentTile;
+let enemy;
 
 export function getSpawnTile(){
     return spawnTile;
@@ -33,11 +33,15 @@ export function getEnemy(){
     return enemy;
 }
 
+export function setEnemy(setEnemy){
+    enemy = setEnemy;
+}
+
 function initialize(){
     setCurrentTile(spawnTile);
     spawnOrMovePlayer(spawnTile);
     loopThroughTiles({ getCurrentTile, setCurrentTile });
-    spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 20);
+    spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 14);
     listenForButtonClicks();
 }       
 

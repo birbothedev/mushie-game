@@ -1,8 +1,11 @@
 import { getAllTiles, isAdjacent, shuffleTiles } from "../tiles/tileLogic.js";
-import { getCurrentTile } from "../mainScript.js";
+import { getCurrentTile, setEnemy } from "../mainScript.js";
 import { createNewEnemyImage } from "../tiles/tileImageEvents.js";
+import { Enemy } from "../classes/enemy.js";
 
 export function spawnEnemy(){
+    const enemy = new Enemy();
+    setEnemy(enemy);
     const validTiles = Array.from(getAllTiles()).filter(tile => tile !== getCurrentTile() 
     && !tile.hasChildNodes() && !isAdjacent(tile, getCurrentTile()));
 
