@@ -1,8 +1,9 @@
-import { spawnOrMovePlayer, addPlayerToNewTile, removePlayerFromOldTile } from "../player/movement.js";
-import { getCurrentTile, setCurrentTile, getPlayer, getEnemy } from "../mainScript.js";
+import { spawnOrMovePlayer } from "../player/movement.js";
+import { getCurrentTile, setCurrentTile, getPlayer, getEnemy, getKey, tileMap } from "../mainScript.js";
 import { doDamageToPlayer, giveCurrencyToPlayer } from "../player/playerEvents.js";
 import { removeDangerOrCurrencyFromTile } from "./tileEvents.js";
 import { moveEnemyCloserToPlayer } from "../enemy/enemyMovement.js";
+import { createCurrencyImage, createDangerTileImage } from "./tileImageEvents.js";
 
 export function isAdjacent(t1, t2){
     const x1 = parseInt(t1.dataset.x);
@@ -74,10 +75,8 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
         tile.addEventListener('click', function(event){
             const clickedTile = event.target.closest('.tiles');
             const currentTile = getCurrentTile();
-            removePlayerFromOldTile(currentTile);
             if (isAdjacent(getCurrentTile(), clickedTile)) {
                 spawnOrMovePlayer(clickedTile);
-                addPlayerToNewTile(clickedTile);
                 setCurrentTile(clickedTile);
                 doDamageToPlayer(getPlayer());
                 giveCurrencyToPlayer(getPlayer());
@@ -102,11 +101,25 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
 }
 
 export function addDangerToTile(tile){
-    tile.classList.add('hasDanger');
+    const key = getKey(tile);
+    const tileData = tileMap.get(key);
+    
+    if (tileData) {
+        tileData.hasDanger = true;
+    }
+
+    createDangerTileImage(tile); 
 }
 
 export function addCurrencyToTile(tile){
-    tile.classList.add('hasCurrency');
+    const key = getKey(tile);
+    const tileData = tileMap.get(key);
+    
+    if (tileData) {
+        tileData.hasCurrency = true;
+    }
+
+    createCurrencyImage(tile); 
 }
 
 export function toggleImageVisibility(tile){

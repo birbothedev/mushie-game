@@ -1,5 +1,5 @@
 import { getAllTiles, isAdjacent, shuffleTiles } from "../tiles/tileLogic.js";
-import { getCurrentTile, setEnemy } from "../mainScript.js";
+import { getCurrentTile, setEnemy, getKey, tileMap } from "../mainScript.js";
 import { createNewEnemyImage } from "../tiles/tileImageEvents.js";
 import { Enemy } from "../classes/enemy.js";
 
@@ -14,10 +14,16 @@ export function spawnEnemy(){
     let i = Math.floor(Math.random() * (validTiles.length));
     const tile = validTiles[i];
 
-    createNewEnemyImage(tile);
     addEnemyToNewTile(tile);
 }
 
 export function addEnemyToNewTile(tile){
-    tile.classList.add('hasEnemy');
+    const key = getKey(tile);
+    const tileData = tileMap.get(key);
+    
+    if (tileData) {
+        tileData.hasEnemy = true;
+    }
+
+    createNewEnemyImage(tile); 
 }

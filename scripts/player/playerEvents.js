@@ -1,11 +1,12 @@
-import { Player } from "../classes/player.js";
-import { getCurrentTile, getPlayer } from "../mainScript.js";
+import { getCurrentTile, getPlayer, tileMap, getKey } from "../mainScript.js";
 import { resetGame } from "../util/util.js";
 
 export function doDamageToPlayer(player){
     const currentTile = getCurrentTile();
+    const key = getKey(currentTile);
+    const tileData = tileMap.get(key);
 
-    if (currentTile.classList.contains("hasDanger")){
+    if (tileData?.hasDanger){
         player.takeDamage(20);
     }
 
@@ -13,8 +14,8 @@ export function doDamageToPlayer(player){
         playerDeath();
     }
 
-    const playerHealthValue = document.getElementById("playerHealthValue");
-    playerHealthValue.innerText = player.getHealth();
+    updatePlayerHealthText();
+    //removing of danger and currency is done in tileEvents
 }
 
 function playerDeath(){
@@ -23,8 +24,10 @@ function playerDeath(){
 
 export function giveCurrencyToPlayer(player){
     const currentTile = getCurrentTile();
+    const key = getKey(currentTile);
+    const tileData = tileMap.get(key);
 
-    if (currentTile.classList.contains("hasCurrency")){
+    if (tileData?.hasCurrency){
         player.addCurrency(1);
     }
 
@@ -34,4 +37,9 @@ export function giveCurrencyToPlayer(player){
 export function updateCurrencyText(){
     const playerCurrencyValue = document.getElementById("playerCurrencyValue");
     playerCurrencyValue.innerText = getPlayer().getCurrency();
+}
+
+export function updatePlayerHealthText(){
+    const playerHealthValue = document.getElementById("playerHealthValue");
+    playerHealthValue.innerText = getPlayer().getHealth();
 }

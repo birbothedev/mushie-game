@@ -4,6 +4,7 @@ import { loopThroughTiles } from "./tiles/tileLogic.js";
 import { spawnOrMovePlayer } from "./player/movement.js";
 import { spawnDangerAndCurrency } from "./tiles/tileEvents.js";
 import { listenForButtonClicks } from "./util/util.js";
+import { spawnEnemy } from "./enemy/enemyEvents.js";
 
 
 const player = new Player("name");
@@ -11,6 +12,27 @@ const player = new Player("name");
 const spawnTile = document.getElementById("tile3");
 let currentTile;
 let enemy;
+
+export const tileMap = new Map();
+
+export function initializeTileMap(){
+    const tiles = Array.from(document.querySelectorAll('.tiles'));
+    tiles.forEach(tile => {
+        const key = getKey(tile);
+        tileMap.set(key, {
+            visited: false,
+            hasPlayer: false,
+            hasDanger: false,
+            hasCurrency: false,
+            hasEnemy: false,
+            domRef: tile
+        });
+    });
+}
+
+export function getKey(tile){
+    return tile.dataset.x + "," + tile.dataset.y;
+}
 
 export function getSpawnTile(){
     return spawnTile;
@@ -37,11 +59,13 @@ export function setEnemy(setEnemy){
 }
 
 function initialize(){
+    initializeTileMap();
     setCurrentTile(spawnTile);
     spawnOrMovePlayer(spawnTile);
     loopThroughTiles({ getCurrentTile, setCurrentTile });
     spawnDangerAndCurrency(Array.from(document.querySelectorAll('.tiles')), 14);
     listenForButtonClicks();
+    spawnEnemy();
 }       
 
 initialize();
