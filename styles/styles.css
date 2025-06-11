@@ -111,3 +111,31 @@ body {
     align-items: center;
     cursor: pointer;
 }
+
+.inventoryGroup{
+    width: fit-content;
+    height: auto;
+    margin: 0 auto;
+    margin-left: 0;
+    margin-right: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 64px);
+    column-gap: 5%;
+}
+
+.inventoryItem {
+    position: relative;
+    border: 3px solid black;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+.inventoryItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}

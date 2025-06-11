@@ -64,3 +64,22 @@ export function styleStackedImage(imgElement) {
     imgElement.style.height = "100%";
     imgElement.style.objectFit = "contain";
 }
+
+export function createFreezeItemImage(){
+    const freezeImage = document.createElement("img");
+    freezeImage.src = "../images/freezeImage.png";
+    freezeImage.alt = "freezeImage";
+    freezeImage.classList.add('inventoryItem');
+    freezeImage.id = "freezeImage";
+    appendInventoryGroupChild(freezeImage);
+}
+
+function appendInventoryGroupChild(image){
+    // Find the inventoryGroup div and append the image to it
+    const inventoryGroup = document.querySelector(".inventoryGroup");
+    if (inventoryGroup) {
+        inventoryGroup.appendChild(image);
+    } else {
+        console.warn("No element with class 'inventoryGroup' found.");
+    }
+}

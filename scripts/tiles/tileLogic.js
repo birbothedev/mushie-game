@@ -103,11 +103,9 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
 export function addDangerToTile(tile){
     const key = getKey(tile);
     const tileData = tileMap.get(key);
-    
     if (tileData) {
         tileData.hasDanger = true;
     }
-
     createDangerTileImage(tile); 
 }
 
@@ -118,7 +116,6 @@ export function addCurrencyToTile(tile){
     if (tileData) {
         tileData.hasCurrency = true;
     }
-
     createCurrencyImage(tile); 
 }
 
