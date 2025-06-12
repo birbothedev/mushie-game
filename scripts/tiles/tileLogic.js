@@ -84,17 +84,17 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 if (getEnemy()){
                     moveEnemyCloserToPlayer(getEnemy(), clickedTile);
                 }
-                // hide all tile images
-                getAllTiles().forEach(tile => {
-                    const image = getTileImage(tile);
-                    if (image) image.style.visibility = 'hidden';
-                });
+                // // hide all tile images
+                // getAllTiles().forEach(tile => {
+                //     const image = getTileImage(tile);
+                //     if (image) image.style.visibility = 'hidden';
+                // });
 
-                // show only those adjacent to the new tile
-                getAdjacentTiles(clickedTile).forEach(adjTile => {
-                    const image = getTileImage(adjTile);
-                    if (image) image.style.visibility = 'visible';
-                });
+                // // show only those adjacent to the new tile
+                // getAdjacentTiles(clickedTile).forEach(adjTile => {
+                //     const image = getTileImage(adjTile);
+                //     if (image) image.style.visibility = 'visible';
+                // });
             }
         });
     });

@@ -59,19 +59,19 @@ export function spawnDangerAndCurrency(row, validTilesINT) {
         if (tileData) {
             tileData.hasDanger = true;
             addDangerToTile(tile);
-            toggleImageVisibility(tile); 
+            // toggleImageVisibility(tile); 
         }
     }
 
     // Assign CURRENCY
-    for (let i = dangerCount; i < validTilesINT - currencyCount; i++) {
+    for (let i = dangerCount; i < dangerCount + currencyCount; i++) {
         const tile = validTiles[i];
         const key = getKey(tile);
         const tileData = tileMap.get(key);
         if (tileData) {
             tileData.hasCurrency = true;
             addCurrencyToTile(tile);
-            toggleImageVisibility(tile);
+            // toggleImageVisibility(tile);
         }
     }
 }
