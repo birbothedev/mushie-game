@@ -8,7 +8,7 @@ export function removeOldEnemyImageAndAddNew(existingtile, newtile){
     }
 
     const enemyImage = document.createElement("img"); 
-    enemyImage.src = `../images/blueTile.png`;
+    enemyImage.src = `/images/blueTile.png`;
     enemyImage.alt = `enemy image`;
     enemyImage.id = 'enemyImage';
     enemyImage.style.zIndex = 2;
@@ -18,7 +18,7 @@ export function removeOldEnemyImageAndAddNew(existingtile, newtile){
 
 export function createNewEnemyImage(tile){
     const enemyImage = document.createElement("img"); 
-    enemyImage.src = `../images/blueTile.png`;
+    enemyImage.src = `/images/blueTile.png`;
     enemyImage.alt = `enemy image`;
     enemyImage.id = 'enemyImage';
     enemyImage.style.zIndex = 1;
@@ -28,7 +28,7 @@ export function createNewEnemyImage(tile){
 
 export function createNewPlayerImage(tile){
     const playerImage = document.createElement("img"); 
-    playerImage.src = `../images/player.png`;
+    playerImage.src = `/images/player.png`;
     playerImage.alt = `player image`;
     playerImage.id = 'playerImage';
     playerImage.style.zIndex = 2;
@@ -38,7 +38,7 @@ export function createNewPlayerImage(tile){
 
 export function createDangerTileImage(tile){
     const dangerImage = document.createElement("img");
-    dangerImage.src = `../images/dangerTile.png`;
+    dangerImage.src = `/images/dangerTile.png`;
     dangerImage.alt = `danger image`;
     dangerImage.classList.add('tile-image');
     dangerImage.style.zIndex = 1;
@@ -48,7 +48,7 @@ export function createDangerTileImage(tile){
 
 export function createCurrencyImage(tile){
     const petalImage = document.createElement("img"); 
-    petalImage.src = `../images/petalTile.png`;
+    petalImage.src = `/images/petalTile.png`;
     petalImage.alt = `petal image`;
     petalImage.classList.add('tile-image');
     petalImage.style.zIndex = 1;
@@ -67,7 +67,7 @@ export function styleStackedImage(imgElement) {
 
 export function createFreezeItemImage(){
     const freezeImage = document.createElement("img");
-    freezeImage.src = "../images/freezeImage.png";
+    freezeImage.src = "/images/freezeImage.png";
     freezeImage.alt = "freezeImage";
     freezeImage.classList.add('inventoryItem');
     freezeImage.id = "freezeImage";
