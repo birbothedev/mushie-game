@@ -8,7 +8,7 @@ export function removeOldEnemyImageAndAddNew(existingtile, newtile){
     }
 
     const enemyImage = document.createElement("img"); 
-    enemyImage.src = `/mushie-game/images/blueTile.png`;
+    enemyImage.src = `images/blueTile.png`;
     enemyImage.alt = `enemy image`;
     enemyImage.id = 'enemyImage';
     enemyImage.style.zIndex = 2;
