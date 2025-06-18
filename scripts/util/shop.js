@@ -1,6 +1,7 @@
 import { getPlayer } from "../mainScript.js";
 import { updateCurrencyText } from "../player/playerEvents.js";
 import { createFreezeItemImage } from "../tiles/tileImageEvents.js";
+import { listenForInventoryClicks } from "./inventory.js";
 import { advanceLevel } from "./levelTracker.js";
 
 function subtractCurrency(int){
@@ -39,6 +40,7 @@ export function unlockFreezeEnemy(){
     } else {
         subtractCurrency(3);
         createFreezeItemImage();
+        listenForInventoryClicks();
     }
 }
 

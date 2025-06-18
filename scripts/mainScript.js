@@ -4,6 +4,7 @@ import { loopThroughTiles } from "./tiles/tileLogic.js";
 import { spawnOrMovePlayer } from "./player/movement.js";
 import { spawnDangerAndCurrency } from "./tiles/tileEvents.js";
 import { listenForButtonClicks } from "./util/util.js";
+import { listenForInventoryClicks } from "./util/inventory.js";
 
 
 const player = new Player("name");

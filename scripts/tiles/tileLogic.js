@@ -82,7 +82,9 @@ export function loopThroughTiles({ getCurrentTile, setCurrentTile }){
                 giveCurrencyToPlayer(getPlayer());
                 removeDangerOrCurrencyFromTile(clickedTile);
                 if (getEnemy()){
-                    moveEnemyCloserToPlayer(getEnemy(), clickedTile);
+                    if (!getEnemy().getFrozenState()) {
+                        moveEnemyCloserToPlayer(getEnemy(), clickedTile);
+                    }
                 }
                 // // hide all tile images
                 // getAllTiles().forEach(tile => {

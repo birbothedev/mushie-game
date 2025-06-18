@@ -103,7 +103,6 @@ function addNewRow(int) {
         newTile.dataset.y = i;
         gridContainer.appendChild(newTile);
 
-        // Add to tileMap
         const key = int + "," + i;
         tileMap.set(key, {
             visited: false,
