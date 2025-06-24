@@ -12,5 +12,4 @@ function useFreeze(){
 
     const enemy = getEnemy();
     enemy.setFrozenState(true);
-    
 }

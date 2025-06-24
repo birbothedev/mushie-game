@@ -23,7 +23,8 @@ export function addEnemyToNewTile(tile){
     
     if (tileData) {
         tileData.hasEnemy = true;
+        createNewEnemyImage(tile); 
     }
 
-    createNewEnemyImage(tile); 
+    // createNewEnemyImage(tile); 
 }

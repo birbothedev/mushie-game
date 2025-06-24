@@ -2,7 +2,7 @@ import {  getAllTiles } from "./tileLogic.js";
 import { loopThroughTiles, 
     addCurrencyToTile, addDangerToTile, toggleImageVisibility,
     shuffleTiles } from "./tileLogic.js";
-import { getCurrentTile, getKey, setCurrentTile, tileMap } from "../mainScript.js";
+import { getCurrentTile, getEnemy, getKey, setCurrentTile, tileMap } from "../mainScript.js";
 
 
 export function replaceRow(){
@@ -34,6 +34,10 @@ export function replaceRow(){
     addNewRow(6);
     loopThroughTiles({ getCurrentTile, setCurrentTile }); 
 
+    if (getEnemy()){
+        getEnemy().setFrozenState(false);
+    }
+    
 }
 
 export function spawnDangerAndCurrency(row, validTilesINT) {

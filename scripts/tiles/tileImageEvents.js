@@ -2,11 +2,14 @@
 export function removeOldEnemyImageAndAddNew(existingtile, newtile){
     // move image from old tile to new tile
     const existingEnemy = document.querySelector("#enemyImage");
+    console.log('existingEnemy:', existingEnemy);
+    console.log('existingtile:', existingtile);
+    console.log('existingEnemy.parentNode === existingtile:', existingEnemy?.parentNode === existingtile);
 
-    if (existingEnemy) {
+
+    if (existingEnemy && existingtile.contains(existingEnemy)) {
         existingtile.removeChild(existingEnemy);
     }
-
     const enemyImage = document.createElement("img"); 
     enemyImage.src = `images/blueTile.png`;
     enemyImage.alt = `enemy image`;
