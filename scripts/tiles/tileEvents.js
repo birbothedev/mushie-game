@@ -3,6 +3,7 @@ import { loopThroughTiles,
     addCurrencyToTile, addDangerToTile, toggleImageVisibility,
     shuffleTiles } from "./tileLogic.js";
 import { getCurrentTile, getEnemy, getKey, setCurrentTile, tileMap } from "../mainScript.js";
+import { updateEnemyTile } from "../enemy/enemyMovement.js";
 
 
 export function replaceRow(){
@@ -34,9 +35,12 @@ export function replaceRow(){
     addNewRow(6);
     loopThroughTiles({ getCurrentTile, setCurrentTile }); 
 
-    if (getEnemy()){
+    // If enemy still on map, update position
+    if (getEnemy() && getEnemy().getX() !== -1) {
         getEnemy().setFrozenState(false);
+        updateEnemyTile(getEnemy(), 3); // shift enemy position up by 3 rows
     }
+
     
 }
 

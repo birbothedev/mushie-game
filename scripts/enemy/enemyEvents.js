@@ -18,11 +18,24 @@ export function spawnEnemy(){
 }
 
 export function addEnemyToNewTile(tile){
+    for (const [key, data] of tileMap.entries()) {
+        if (data.hasEnemy) {
+            data.hasEnemy = false;
+            if (data.domRef) {
+                const existingEnemy = data.domRef.querySelector(".enemy");
+                if (existingEnemy) {
+                    existingEnemy.remove();
+                }
+            }
+        }
+    }
+
     const key = getKey(tile);
     const tileData = tileMap.get(key);
-    
+
     if (tileData) {
         tileData.hasEnemy = true;
     }
-    createNewEnemyImage(tile); 
+
+    createNewEnemyImage(tile);
 }
